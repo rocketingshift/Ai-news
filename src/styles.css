@@ -1,0 +1,953 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "Chronicle Codex"
+ * Phong cách: cinematic mythic tối (Obsidian + Jade Cyan + Antique Gold),
+ * lấy cảm hứng từ poster phim sử thi Where Winds Meet.
+ */
+
+@theme inline {
+  --font-sans: "Be Vietnam Pro", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", "Cinzel Decorative", Georgia, serif;
+  --font-viet-display: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--ring-offset-background);
+  /* Cinematic mở rộng */
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-jade: var(--jade);
+  --color-jade-deep: var(--jade-deep);
+  --color-midnight: var(--midnight);
+  --color-midnight-deep: var(--midnight-deep);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* === CHRONICLE CODEX — Dark Mythic Cinematic ===
+     Obsidian hắc ngọc, ngọc jade phát quang, vàng đồng cổ kính. */
+
+  /* Nền obsidian — đen than chì ngả lam sâu, có chiều sâu */
+  --background: oklch(0.145 0.018 264);
+  /* Mực ngà ấm — dễ đọc trên nền tối, không chói */
+  --foreground: oklch(0.93 0.018 80);
+  --card: oklch(0.185 0.022 264);
+  --card-foreground: oklch(0.93 0.018 80);
+  --popover: oklch(0.165 0.02 264);
+  --popover-foreground: oklch(0.93 0.018 80);
+
+  /* Primary = Antique Gold — nút chính, viền nhấn, mốc chương */
+  --primary: oklch(0.8 0.135 85);
+  --primary-foreground: oklch(0.16 0.02 264);
+
+  /* Secondary = Obsidian nhạt hơn */
+  --secondary: oklch(0.24 0.025 264);
+  --secondary-foreground: oklch(0.93 0.018 80);
+
+  --muted: oklch(0.24 0.025 264);
+  --muted-foreground: oklch(0.68 0.03 84);
+
+  /* Accent = Jade Cyan phát quang — điểm nhấn năng lượng, hover */
+  --accent: oklch(0.72 0.14 195);
+  --accent-foreground: oklch(0.13 0.02 264);
+
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.96 0.01 80);
+  --border: oklch(0.78 0.06 85 / 14%);
+  --input: oklch(0.78 0.06 85 / 18%);
+  --ring: oklch(0.72 0.14 195);
+
+  /* === Màu mở rộng cinematic === */
+  /* Vàng đồng cổ kính — cho số chương, viền filigree */
+  --gold: oklch(0.82 0.135 85);
+  --gold-deep: oklch(0.66 0.12 72);
+  /* Ngọc jade phát quang — cho timeline, linh quang */
+  --jade: oklch(0.74 0.15 195);
+  --jade-deep: oklch(0.56 0.14 198);
+  /* Midnight — lớp nền sâu nhất cho hero */
+  --midnight: oklch(0.11 0.015 264);
+  --midnight-deep: oklch(0.07 0.012 264);
+
+  --chart-1: oklch(0.74 0.15 195);
+  --chart-2: oklch(0.82 0.135 85);
+  --chart-3: oklch(0.62 0.22 25);
+  --chart-4: oklch(0.7 0.13 250);
+  --chart-5: oklch(0.78 0.12 60);
+  --sidebar: oklch(0.145 0.018 264);
+  --sidebar-foreground: oklch(0.93 0.018 80);
+  --sidebar-primary: oklch(0.8 0.135 85);
+  --sidebar-primary-foreground: oklch(0.16 0.02 264);
+  --sidebar-accent: oklch(0.72 0.14 195);
+  --sidebar-accent-foreground: oklch(0.13 0.02 264);
+  --sidebar-border: oklch(0.78 0.06 85 / 14%);
+  --sidebar-ring: oklch(0.72 0.14 195);
+}
+
+/* Giữ dark theme đồng nhất (không có toggle, nhưng đảm bảo nhất quán) */
+.dark {
+  --background: oklch(0.145 0.018 264);
+  --foreground: oklch(0.93 0.018 80);
+  --card: oklch(0.185 0.022 264);
+  --card-foreground: oklch(0.93 0.018 80);
+  --popover: oklch(0.165 0.02 264);
+  --popover-foreground: oklch(0.93 0.018 80);
+  --primary: oklch(0.8 0.135 85);
+  --primary-foreground: oklch(0.16 0.02 264);
+  --secondary: oklch(0.24 0.025 264);
+  --secondary-foreground: oklch(0.93 0.018 80);
+  --muted: oklch(0.24 0.025 264);
+  --muted-foreground: oklch(0.68 0.03 84);
+  --accent: oklch(0.72 0.14 195);
+  --accent-foreground: oklch(0.13 0.02 264);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.96 0.01 80);
+  --border: oklch(0.78 0.06 85 / 14%);
+  --input: oklch(0.78 0.06 85 / 18%);
+  --ring: oklch(0.72 0.14 195);
+  --chart-1: oklch(0.74 0.15 195);
+  --chart-2: oklch(0.82 0.135 85);
+  --chart-3: oklch(0.62 0.22 25);
+  --chart-4: oklch(0.7 0.13 250);
+  --chart-5: oklch(0.78 0.12 60);
+  --sidebar: oklch(0.145 0.018 264);
+  --sidebar-foreground: oklch(0.93 0.018 80);
+  --sidebar-primary: oklch(0.8 0.135 85);
+  --sidebar-primary-foreground: oklch(0.16 0.02 264);
+  --sidebar-accent: oklch(0.72 0.14 195);
+  --sidebar-accent-foreground: oklch(0.13 0.02 264);
+  --sidebar-border: oklch(0.78 0.06 85 / 14%);
+  --sidebar-ring: oklch(0.72 0.14 195);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Lớp sương khói obsidian mỏng phủ toàn trang */
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.74 0.15 195 / 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.82 0.135 85 / 0.04) 0%, transparent 55%);
+    background-attachment: fixed;
+  }
+}
+
+/* === CINEMATIC UTILITIES === */
+@layer utilities {
+  /* Sợi chỉ vàng — gradient dùng cho đường timeline */
+  .energy-line {
+    background: linear-gradient(180deg, var(--jade) 0%, var(--gold) 100%);
+  }
+  .energy-line-h {
+    background: linear-gradient(90deg, var(--jade) 0%, var(--gold) 100%);
+  }
+
+  /* Vàng kim cổ kính — text gradient cho số chương / tiêu đề phim */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    padding-top: 0.15em;
+    padding-bottom: 0.25em;
+  }
+
+  /* Chữ vàng dập dát vàng lá phong cách Where Winds Meet (Texture chiseled gold)
+     LUÔN hiển thị: gradient vàng đục làm nền chữ, texture PNG chỉ là lớp điểm nhấn
+     phía trên (blend overlay) — nếu ảnh không tải được chữ vẫn rõ ràng.
+     SỐNG ĐỘNG: gradient dịch chuyển chậm (7s) + glow pulse nhịp thở (4s).
+     Đầy đủ 4 thuộc tính chống mất dấu tiếng Việt (color, display, paddingTop, paddingBottom). */
+  .gold-foil-title {
+    font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background-image:
+      url("https://vibe.filesafe.space/1790240714414154753/assets/00ca84d1-90b4-45b8-9183-f5c2a1cfe849.png"),
+      linear-gradient(110deg, #f7e7ab 0%, #e6c766 35%, #d4af37 60%, #b07d1e 100%);
+    background-size:
+      cover,
+      220% cover;
+    background-position:
+      center,
+      0% center;
+    background-blend-mode: overlay, normal;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    padding-top: 0.15em;
+    padding-bottom: 0.25em;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.95)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.9));
+    animation:
+      gold-shimmer 7s linear infinite,
+      gold-glow 4s ease-in-out infinite;
+  }
+
+  @keyframes gold-shimmer {
+    0% {
+      background-position:
+        center,
+        220% center;
+    }
+    100% {
+      background-position:
+        center,
+        0% center;
+    }
+  }
+
+  @keyframes gold-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.95)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
+    }
+    50% {
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.95)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 0 14px rgba(212, 175, 55, 0.55));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gold-foil-title {
+      animation: none;
+      background-size: cover, cover;
+      background-position: center, center;
+    }
+  }
+
+  /* Kiểu chữ ngọc bích phát quang dập dát vàng lá "PERILOUS EMINENCE" phong cách Where Winds Meet
+     Đúng theo ảnh mẫu:
+     - Nền: ngọc bích băng thanh/cyan phát quang ở trên, chuyển dần sang xanh biển đậm và ánh bụi vàng dát ở đáy.
+     - Dải vân dát vàng lá xen kẽ.
+     - Phát quang viền mỏng trắng/cyan xung quanh và đổ bóng huyền ảo.
+     - SỐNG ĐỘNG: gradient dịch chuyển chậm (7s) + glow pulse nhịp thở (4s). */
+  .perilous-eminence-title {
+    font-family: "Cormorant Garamond", "Cinzel", "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background-image:
+      linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #e0fbfc 12%,
+        #82e3f5 32%,
+        #38b4d8 55%,
+        #127096 75%,
+        #e2b855 88%,
+        #b88628 100%
+      ),
+      url("https://vibe.filesafe.space/1790240714414154753/attachments/fe160a4b-4f0a-4bf9-920c-a02eb6f5ae92.png");
+    background-size:
+      220% 100%,
+      cover;
+    background-position:
+      0% center,
+      center;
+    background-blend-mode: overlay, normal;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    padding-top: 0.15em;
+    padding-bottom: 0.25em;
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 12px rgba(80, 220, 240, 0.55)) drop-shadow(0 0 28px rgba(30, 160, 200, 0.35))
+      drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+    animation:
+      perilous-shimmer 7s linear infinite,
+      perilous-glow 4s ease-in-out infinite;
+  }
+
+  /* Dịch chuyển gradient vàng/ngọc chậm — kim loại "thở" (phải → trái) */
+  @keyframes perilous-shimmer {
+    0% {
+      background-position:
+        220% center,
+        center;
+    }
+    100% {
+      background-position:
+        0% center,
+        center;
+    }
+  }
+
+  /* Glow pulse nhịp thở — lớp phát quang cyan phồng/xẹp nhẹ */
+  @keyframes perilous-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.9))
+        drop-shadow(0 0 10px rgba(80, 220, 240, 0.45))
+        drop-shadow(0 0 24px rgba(30, 160, 200, 0.28)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+    }
+    50% {
+      filter: drop-shadow(0 0 1px rgba(255, 255, 255, 1))
+        drop-shadow(0 0 18px rgba(80, 220, 240, 0.7)) drop-shadow(0 0 38px rgba(30, 160, 200, 0.45))
+        drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+    }
+  }
+
+  /* Tôn trọng người nhạy cảm với chuyển động — tắt hoàn toàn */
+  @media (prefers-reduced-motion: reduce) {
+    .perilous-eminence-title {
+      animation: none;
+      background-size:
+        100% 100%,
+        cover;
+      background-position: center, center;
+    }
+  }
+
+  /* Ngọc jade phát quang — text gradient cho điểm nhấn */
+  .text-jade-gradient {
+    background: linear-gradient(135deg, var(--jade) 0%, var(--jade-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
+    padding-top: 0.15em;
+    padding-bottom: 0.25em;
+  }
+
+  /* Khối midnight sâu cho hero phim */
+  .bg-midnight-cinema {
+    background:
+      radial-gradient(ellipse at 50% 0%, oklch(0.74 0.15 195 / 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, oklch(0.82 0.135 85 / 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, var(--midnight-deep) 0%, var(--midnight) 100%);
+  }
+
+  /* Hào quang rạp chiếu — hai viền sóng jade + gold */
+  .cinema-glow {
+    box-shadow:
+      0 0 80px -20px oklch(0.74 0.15 195 / 0.4),
+      0 0 120px -40px oklch(0.82 0.135 85 / 0.3);
+  }
+
+  /* Viền filigree vàng đồng mảnh */
+  .filigree-border {
+    border: 1px solid oklch(0.82 0.135 85 / 0.35);
+    box-shadow: inset 0 0 0 1px oklch(0.66 0.12 72 / 0.15);
+  }
+
+  /* Khối "chân trời 2027" — mờ, huyền ảo, ngọc phát quang */
+  .horizon-fade {
+    background:
+      radial-gradient(ellipse at 50% 100%, oklch(0.74 0.15 195 / 0.1) 0%, transparent 70%),
+      linear-gradient(180deg, transparent 0%, oklch(0.185 0.022 264 / 0.6) 100%);
+  }
+
+  /* Lỗ đục film perforation — dải đục lỗ dọc */
+  .film-perforation {
+    background-image: radial-gradient(
+      circle at 0.5rem 0.5rem,
+      transparent 0.18rem,
+      var(--midnight-deep) 0.2rem
+    );
+    background-size: 1rem 100%;
+    background-repeat: repeat-x;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Chặn cuộn lan truyền ra ngoài -> tránh trình duyệt hiểu là back gesture trên mobile */
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+  }
+}
+
+/* ===========================================================================
+    LIGHT CODEX — theme sáng cho trang Lưu trữ (luu-tru)
+    Concept "TÀNG THƯ BIÊN NIÊN": nền giấy Tuyên chỉ ngà ấm, mực thủy mặc,
+    dấu triện đỏ son, viền kim loại vàng đồng thanh mảnh.
+    Hài hòa với Chronicle Codex tối: cùng vàng đồng cổ + ngọc jade.
+    Áp dụng qua class .light-codex bao quanh toàn bộ route /luu-tru.
+    =========================================================================== */
+.light-codex {
+  --background: oklch(0.985 0.008 95);
+  --foreground: oklch(0.22 0.03 80);
+  --card: oklch(1 0.006 95);
+  --card-foreground: oklch(0.22 0.03 80);
+  --popover: oklch(0.99 0.006 95);
+  --popover-foreground: oklch(0.22 0.03 80);
+  --secondary: oklch(0.94 0.012 90);
+  --secondary-foreground: oklch(0.3 0.03 80);
+  --muted: oklch(0.93 0.012 90);
+  --muted-foreground: oklch(0.45 0.03 80);
+  --border: oklch(0.82 0.04 85 / 40%);
+  --input: oklch(0.82 0.04 85 / 50%);
+
+  /* Giữ vàng đồng cổ + ngọc jade từ dark theme để liền mạch phong cách */
+  --gold: oklch(0.7 0.13 78);
+  --gold-deep: oklch(0.55 0.12 70);
+  --jade: oklch(0.55 0.13 200);
+  --jade-deep: oklch(0.42 0.12 205);
+  --midnight: oklch(0.25 0.02 264);
+  --midnight-deep: oklch(0.16 0.02 264);
+  /* Đỏ son triện */
+  --seal-red: oklch(0.52 0.18 28);
+  /* Nền dùng cho dải mờ marquee — thay đổi theo theme */
+  --codex-bg: oklch(0.985 0.008 95);
+
+  /* Nền giấy ngà ấm + tranh thủy mặc mờ phía sau */
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  background-image:
+    url("https://vibe.filesafe.space/1790240714414154753/assets/b7479428-ae60-45c1-a7b6-c817282d7b72.png"),
+    radial-gradient(ellipse 80% 50% at 50% -5%, oklch(0.55 0.13 200 / 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, oklch(0.7 0.13 78 / 0.05) 0%, transparent 55%);
+  background-size: cover, auto, auto;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed;
+}
+
+/* Tiêu đề dát vàng nhạt hơn trên nền sáng (giảm độ tương phản vàng) */
+.light-codex .gold-foil-title {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 6px rgba(120, 90, 30, 0.18));
+}
+
+/* Kiểu chữ tiêu đề "DÒNG CHẢY THỜI GIAN" trên nền sáng:
+   Phong cách "Mực Tàu Dát Vàng Cổ" (Sơn mài mộc bản hoàng gia):
+   - Thân chữ mực Tàu than chì đậm (#0b0f17 -> #1c1917) chuyển sắc đồng thau và vàng kim cổ (#b45309 -> #d97706).
+   - Nổi khối 3D sắc nét với shadow chạm khắc tinh tế, đọc cực kỳ rõ ràng và uy nghi trên nền giấy Tuyên ngà.
+   - Hiệu ứng ánh vàng chảy chậm qua các nét khắc kim loại. */
+.light-codex .perilous-light-title {
+  font-family: "Cormorant Garamond", "Cinzel", "Playfair Display", Georgia, serif;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    115deg,
+    #090d16 0%,
+    #18181b 22%,
+    #292524 38%,
+    #78350f 54%,
+    #b45309 68%,
+    #d97706 78%,
+    #1c1917 92%,
+    #090d16 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-top: 0.15em;
+  padding-bottom: 0.25em;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.95))
+    drop-shadow(0 2px 4px rgba(60, 40, 15, 0.35)) drop-shadow(0 4px 12px rgba(180, 83, 9, 0.18));
+  animation: perilous-shimmer 8s linear infinite;
+}
+
+/* === TIÊU ĐỀ PHÂN CHIA MỐC THÁNG (CHAPTER HEADER) ===
+   - Dark theme (.dark-codex): Chữ vàng dát lá hoàng gia Where Winds Meet (.chapter-gold-foil-title).
+   - Light theme (.light-codex): Trở về thiết kế mộc bản hoàng gia / mạ đồng thau cổ (.chapter-bronze-gold-title)
+     với gradient màu than chì chuyển sang đồng thau hổ phách (#1c1917 -> #9a3412 / #b45309),
+     đáp ứng đúng guideline chống mất dấu tiếng Việt:
+     - display: inline-block
+     - color: transparent; -webkit-text-fill-color: transparent
+     - padding-top: 0.15em; padding-bottom: 0.25em
+*/
+/* Dark mode: Dấu Triện Khắc Đồng Cổ Điển vát góc bát giác (theo bản cũ đính kèm) */
+.dark-codex .bronze-seal-frame {
+  position: relative;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.7)) drop-shadow(0 2px 4px rgba(180, 83, 9, 0.25));
+}
+.dark-codex .bronze-seal {
+  position: relative;
+  background: radial-gradient(
+    circle at 35% 30%,
+    #c27b38 0%,
+    #a85c24 35%,
+    #8b4513 70%,
+    #6d3209 100%
+  );
+  clip-path: polygon(
+    14px 0%,
+    calc(100% - 14px) 0%,
+    100% 14px,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    14px 100%,
+    0% calc(100% - 14px),
+    0% 14px
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 230, 180, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode: Chữ TIÊU ĐIỂM / THÁNG vàng rực dát vàng nguyên chất có vân sáng (Gold Leaf Foil theo bản cũ) */
+.dark-codex .chapter-dark-title {
+  font-family: "Cormorant Garamond", "Cinzel", "Playfair Display", Georgia, serif !important;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background-image:
+    url("https://vibe.filesafe.space/1790240714414154753/assets/00ca84d1-90b4-45b8-9183-f5c2a1cfe849.png"),
+    linear-gradient(110deg, #fff2b2 0%, #ffd700 25%, #e6ac00 50%, #ffd700 75%, #c68a00 100%);
+  background-size:
+    cover,
+    200% 100%;
+  background-position:
+    center,
+    0% center;
+  background-blend-mode: overlay, normal;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-top: 0.15em;
+  padding-bottom: 0.25em;
+  line-height: 1.2;
+  filter: drop-shadow(0 0 1px rgba(255, 240, 160, 0.9))
+    drop-shadow(0 2px 8px rgba(255, 200, 50, 0.55)) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.9));
+  animation: gold-shimmer 7s linear infinite;
+}
+
+/* Light mode: Thiết kế headline tháng & tiêu điểm mộc bản / đồng thau cổ điển (theo ảnh mẫu) */
+.light-codex .chapter-bronze-gold-title {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif !important;
+  font-weight: 900;
+  background-image: linear-gradient(
+    115deg,
+    #1c1917 0%,
+    #292524 25%,
+    #7c2d12 48%,
+    #b45309 68%,
+    #d97706 82%,
+    #1c1917 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-top: 0.15em;
+  padding-bottom: 0.25em;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9))
+    drop-shadow(0 2px 4px rgba(60, 40, 15, 0.25));
+}
+
+/* === PHƯƠNG ÁN 1: DẤU TRIỆN BÁT GIÁC KHẮC NGỌC & VÀNG ĐỒNG (Imperial Jade Octagonal Seal) ===
+   Khối bát giác hoàng gia vát góc tinh tế, nền ngọc bích sương mờ Frosted Jadeite,
+   viền đôi đồng thau chải xước, 4 chốt đinh tán đồng mạ vàng kim tinh xảo */
+.light-codex .imperial-jade-seal {
+  position: relative;
+  background: radial-gradient(
+    circle at 40% 32%,
+    oklch(0.97 0.04 185) 0%,
+    oklch(0.92 0.07 192) 48%,
+    oklch(0.84 0.1 198) 82%,
+    oklch(0.76 0.12 202) 100%
+  );
+  clip-path: polygon(
+    14px 0%,
+    calc(100% - 14px) 0%,
+    100% 14px,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    14px 100%,
+    0% calc(100% - 14px),
+    0% 14px
+  );
+  box-shadow:
+    0 4px 16px -2px rgba(60, 40, 15, 0.18),
+    0 2px 6px rgba(15, 80, 85, 0.15);
+}
+
+.light-codex .imperial-jade-seal-frame {
+  position: relative;
+  filter: drop-shadow(0 4px 12px rgba(60, 40, 15, 0.15))
+    drop-shadow(0 1px 2px rgba(20, 80, 85, 0.2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light-codex .perilous-light-title {
+    animation: none;
+    background-size: 100% 100%;
+    background-position: center, center;
+  }
+}
+
+/* Sợi năng lượng vàng-jade dùng cho timeline sáng */
+.light-codex .energy-line {
+  background: linear-gradient(180deg, var(--jade) 0%, var(--gold-deep) 100%);
+}
+.light-codex .energy-line-h {
+  background: linear-gradient(90deg, var(--jade) 0%, var(--gold-deep) 100%);
+}
+
+.light-codex .text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-top: 0.15em;
+  padding-bottom: 0.25em;
+}
+
+.light-codex .text-jade-gradient {
+  background: linear-gradient(135deg, var(--jade) 0%, var(--jade-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  padding-top: 0.15em;
+  padding-bottom: 0.25em;
+}
+
+/* ===========================================================================
+    DARK CODEX — theme tối cho trang Lưu trữ (đối xứng Chronicle Codex tối)
+    Cùng bảng vàng đồng cổ + ngọc jade phát quang như trang chiếu phim,
+    để người dùng chuyển theme không thấy lệch phong cách.
+    =========================================================================== */
+.dark-codex {
+  --codex-bg: oklch(0.145 0.018 264);
+  --background: oklch(0.145 0.018 264);
+  --foreground: oklch(0.93 0.018 80);
+  --card: oklch(0.185 0.022 264);
+  --card-foreground: oklch(0.93 0.018 80);
+  --popover: oklch(0.165 0.02 264);
+  --popover-foreground: oklch(0.93 0.018 80);
+  --secondary: oklch(0.24 0.025 264);
+  --secondary-foreground: oklch(0.93 0.018 80);
+  --muted: oklch(0.24 0.025 264);
+  --muted-foreground: oklch(0.68 0.03 84);
+  --border: oklch(0.78 0.06 85 / 14%);
+  --input: oklch(0.78 0.06 85 / 18%);
+  --gold: oklch(0.82 0.135 85);
+  --gold-deep: oklch(0.66 0.12 72);
+  --jade: oklch(0.74 0.15 195);
+  --jade-deep: oklch(0.56 0.14 198);
+  --midnight: oklch(0.11 0.015 264);
+  --midnight-deep: oklch(0.07 0.012 264);
+  --seal-red: oklch(0.52 0.18 28);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  /* Nền tranh thủy mặc núi sương phong cách Where Winds Meet chạy phía sau cho Dark Mode.
+     Lớp overlay tối đậm phía trên làm tranh thủy mặc chìm sâu, không gây phân tán
+     khi đọc bài báo — chỉ còn thoáng bóng núi sương mờ ảo phía xa. */
+  background-image:
+    linear-gradient(180deg, oklch(0.07 0.012 264 / 0.6) 0%, oklch(0.1 0.015 264 / 0.6) 100%),
+    url("https://vibe.filesafe.space/1790240714414154753/assets/3924253e-2584-4fd9-958f-95ba7cca02c8.png"),
+    radial-gradient(ellipse 80% 50% at 50% -5%, oklch(0.74 0.15 195 / 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, oklch(0.82 0.135 85 / 0.04) 0%, transparent 55%);
+  background-size: cover, cover, auto, auto;
+  background-position: center, center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed, fixed;
+}
+
+/* Dải mờ marquee — dùng biến nền theo theme (light/dark tự đổi) */
+.codex-fade-left {
+  background: linear-gradient(to right, var(--codex-bg), var(--codex-bg) 55%, transparent);
+}
+
+/* Header sticky tối — đục đặc, che nội dung khi cuộn */
+.dark-codex .parchment-glass {
+  background: linear-gradient(180deg, oklch(0.16 0.02 264) 0%, oklch(0.13 0.018 264) 100%);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+}
+
+/* Thẻ ghi chép tối — kính obsidian, viền vàng đồng mảnh */
+.dark-codex .scroll-card {
+  background: linear-gradient(
+    180deg,
+    oklch(0.2 0.022 264 / 0.92) 0%,
+    oklch(0.17 0.02 264 / 0.88) 100%
+  );
+  border: 1px solid oklch(0.82 0.135 85 / 0.22);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.66 0.12 72 / 0.12),
+    0 8px 24px -12px rgba(0, 0, 0, 0.5);
+}
+.dark-codex .scroll-card:hover {
+  border-color: oklch(0.82 0.135 85 / 0.45);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.66 0.12 72 / 0.2),
+    0 14px 36px -14px rgba(0, 0, 0, 0.6);
+}
+
+/* Ô tháng dạng tab tối */
+.dark-codex .month-tab {
+  background: linear-gradient(180deg, oklch(0.2 0.022 264) 0%, oklch(0.17 0.02 264) 100%);
+  border: 1px solid oklch(0.82 0.135 85 / 0.2);
+}
+.dark-codex .month-tab:hover {
+  border-color: oklch(0.82 0.135 85 / 0.5);
+}
+.dark-codex .month-tab.active {
+  border-color: oklch(0.66 0.12 72 / 0.6);
+  background: linear-gradient(180deg, oklch(0.82 0.135 85 / 0.12) 0%, oklch(0.17 0.02 264) 100%);
+}
+
+/* Tiêu đề mốc tháng trên nền tối dùng cùng kiểu chữ dát vàng lá hoàng gia Where Winds Meet */
+
+/* === TÀNG THƯ BIÊN NIÊN — utilities cho trang Lưu trữ === */
+
+/* Thẻ kinh thư / trang ghi chép lịch sử — nền giấy mờ, viền kim loại mảnh */
+.scroll-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    oklch(1 0.006 95 / 0.92) 0%,
+    oklch(0.99 0.008 95 / 0.88) 100%
+  );
+  border: 1px solid oklch(0.7 0.13 78 / 0.3);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.55 0.12 70 / 0.1),
+    0 1px 2px rgba(80, 60, 20, 0.06),
+    0 8px 24px -12px rgba(80, 60, 20, 0.18);
+  transition: all 0.35s ease;
+}
+.scroll-card:hover {
+  border-color: oklch(0.7 0.13 78 / 0.55);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.55 0.12 70 / 0.2),
+    0 2px 4px rgba(80, 60, 20, 0.08),
+    0 14px 36px -14px rgba(80, 60, 20, 0.28);
+}
+
+/* Dấu triện đỏ son — chấm vuông nhỏ trang trí */
+.seal-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--seal-red);
+  color: oklch(0.98 0.01 95);
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow:
+    0 0 0 1px oklch(0.4 0.16 28 / 0.4),
+    0 1px 3px rgba(120, 20, 20, 0.25);
+}
+
+/* Dải viền trang trí đôi — gạch ngang jade-gold mảnh */
+.codex-rule {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.55 0.13 200 / 0.5) 30%,
+    oklch(0.7 0.13 78 / 0.7) 50%,
+    oklch(0.55 0.13 200 / 0.5) 70%,
+    transparent 100%
+  );
+}
+
+/* Ô tháng dạng thẻ ngọc đánh dấu trang sách */
+.month-tab {
+  position: relative;
+  background: linear-gradient(180deg, oklch(1 0.006 95) 0%, oklch(0.97 0.01 90) 100%);
+  border: 1px solid oklch(0.7 0.13 78 / 0.28);
+  box-shadow: 0 1px 2px rgba(80, 60, 20, 0.05);
+  transition: all 0.3s ease;
+}
+.month-tab:hover {
+  border-color: oklch(0.7 0.13 78 / 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -8px rgba(80, 60, 20, 0.25);
+}
+.month-tab.active {
+  border-color: oklch(0.55 0.12 70 / 0.7);
+  background: linear-gradient(180deg, oklch(0.7 0.13 78 / 0.1) 0%, oklch(0.97 0.01 90) 100%);
+  box-shadow:
+    inset 0 0 0 1px oklch(0.55 0.12 70 / 0.25),
+    0 6px 16px -8px rgba(80, 60, 20, 0.25);
+}
+
+/* Nền giấy cho khối header sticky — 100% đục đặc, che hoàn toàn nội dung khi cuộn */
+.parchment-glass {
+  background: linear-gradient(180deg, oklch(0.988 0.007 95) 0%, oklch(0.978 0.01 92) 100%);
+  box-shadow: 0 4px 20px -2px rgba(80, 60, 20, 0.08);
+}
+
+/* Animation marquee / chạy vô tận mượt mà cho dải tháng và dải tag */
+@keyframes codex-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Chiều ngược lại — chạy từ trái sang phải */
+@keyframes codex-marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-codex-marquee {
+  display: flex;
+  width: max-content;
+  animation: codex-marquee-reverse 60s linear infinite;
+}
+
+.animate-codex-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: codex-marquee-reverse 60s linear infinite;
+}
+
+.animate-codex-marquee-forward {
+  display: flex;
+  width: max-content;
+  animation: codex-marquee 60s linear infinite;
+}
+
+.animate-codex-marquee:hover,
+.animate-codex-marquee-fast:hover,
+.animate-codex-marquee-forward:hover {
+  animation-play-state: paused;
+}
+
+.marquee-paused {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-codex-marquee,
+  .animate-codex-marquee-fast,
+  .animate-codex-marquee-forward {
+    animation: none;
+    width: auto;
+  }
+}
+
+/* ===========================================================================
+    MOBILE OPTIMIZATION — chống tràn ngang toàn hệ thống
+    =========================================================================== */
+@layer base {
+  /* Khóa chiều ngang trang, chặn mọi tràn ngang do hiệu ứng 3D/scale */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Chặn hoàn toàn back-gesture ngang ở cấp trang */
+    overscroll-behavior-x: none;
+  }
+
+  /* Bảo vệ các khối [perspective]/[transform-style:preserve-3d] không gây tràn */
+  [class*="perspective"],
+  [class*="preserve-3d"] {
+    contain: layout style;
+  }
+
+  /* Ngăn ảnh/iframe/video tràn khung trên mobile */
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100%;
+  }
+}
+
+/* Thu nhỏ các cỗ máy 3D (astrolabe/orrery/compass) trên mobile để không tràn & gọn */
+@media (max-width: 640px) {
+  .animate-codex-marquee,
+  .animate-codex-marquee-fast {
+    /* Marquee vẫn chạy nhưng gọn hơn, không làm header cao quá */
+    animation-duration: 50s linear infinite;
+  }
+}
+
+/* Tránh chạm (tap) nút quá sát trên mobile — tăng vùng cảm ứng */
+@media (max-width: 640px) {
+  button {
+    min-height: 36px;
+  }
+}
+
+/* Giảm blur nặng trên mobile để tăng hiệu năng render & mượt cuộn */
+@media (max-width: 640px) {
+  [class*="blur-[80px]"],
+  [class*="blur-[120px]"],
+  [class*="blur-[140px]"],
+  [class*="blur-[150px]"],
+  [class*="blur-[170px]"] {
+    filter: blur(50px);
+  }
+}
+
+/* Safe-area cho điện thoại có tai/notch — padding dưới cho CTA/footer */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
